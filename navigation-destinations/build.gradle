@@ -5,11 +5,8 @@ plugins {
 
 apply from: "$rootDir/gradle/publishing.gradle"
 
-group 'com.miquido.android.navigation'
-version projectVersionName
-
 android {
-    namespace 'com.miquido.android.navigation.destinations'
+    namespace "com.miquido.android.navigation.destinations"
 }
 
 dependencies {

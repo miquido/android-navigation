@@ -1,19 +1,85 @@
-apply plugin: 'maven-publish'
+apply plugin: "maven-publish"
+apply plugin: "signing"
 
-afterEvaluate {
-    publishing {
-        repositories {
-            mavenLocal()
-        }
+group "com.miquido.android.navigation"
+version projectVersionName
 
-        publications {
-            // Creates a Maven publication called "release".
-            release(MavenPublication) {
-                from components.release
-
-                groupId = project.group
-                version = project.version
+plugins.withId("com.android.library") {
+    android {
+        publishing {
+            singleVariant("release") {
+                withSourcesJar()
+                withJavadocJar()
             }
         }
     }
+    afterEvaluate {
+        setupPublishing(components.release)
+    }
+}
+
+plugins.withId("java-library") {
+    java {
+        withSourcesJar()
+        withJavadocJar()
+    }
+
+    afterEvaluate {
+        setupPublishing(components.java)
+    }
+}
+
+def setupPublishing(component) {
+    publishing {
+        repositories {
+            maven {
+                name = "sonatype"
+                url = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
+                credentials {
+                    // Credentials should be stored in the gradle.properties file in the user’s Gradle home directory
+                    username findProperty("sonatype.user")
+                    password findProperty("sonatype.password")
+                }
+            }
+        }
+
+        publications {
+            release(MavenPublication) {
+                from component
+
+                groupId = project.group
+                version = project.version
+
+                pom {
+                    name = "Compose Navigator"
+                    description = "AndroidX Navigation controlled from view models."
+                    url = "https://github.com/miquido/android-navigation"
+                    licenses {
+                        license {
+                            name = "The Apache License, Version 2.0"
+                            url = "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                        }
+                    }
+                    developers {
+                        developer {
+                            id = "roman.savka"
+                            name = "Roman Savka"
+                            email = "roman.savka@miquido.com"
+                        }
+                    }
+                    scm {
+                        connection = "scm:git:git://github.com:miquido/android-navigation.git"
+                        developerConnection = "scm:git:ssh://github.com:miquido/android-navigation.git"
+                        url = "https://github.com/miquido/android-navigation"
+                    }
+                }
+            }
+        }
+    }
+}
+
+signing {
+    // Credentials should be configured according to
+    // https://docs.gradle.org/current/userguide/signing_plugin.html#sec:signatory_credentials
+    sign publishing.publications
 }

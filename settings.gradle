@@ -15,10 +15,10 @@ dependencyResolutionManagement {
 rootProject.name = "Navigation"
 
 include ":navigation-runtime"
-include ':navigation-destinations'
-include ':navigation-hilt'
-include ':navigation-koin'
+include ":navigation-destinations"
+include ":navigation-hilt"
+include ":navigation-koin"
 
-include ':sample-koin'
+include ":sample-koin"
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")

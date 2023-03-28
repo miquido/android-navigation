@@ -1,5 +1,5 @@
 ext {
-    projectVersionName = "1.0.0"
+    projectVersionName = "1.0.0-beta"
     projectVersionCode = 1
     projectCompileSdk = 33
     projectMinSdk = 23

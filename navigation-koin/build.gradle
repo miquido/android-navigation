@@ -5,11 +5,8 @@ plugins {
 
 apply from: "$rootDir/gradle/publishing.gradle"
 
-group 'com.miquido.android.navigation'
-version projectVersionName
-
 android {
-    namespace 'com.miquido.android.navigation.koin'
+    namespace "com.miquido.android.navigation.koin"
 
     buildFeatures {
         compose true
