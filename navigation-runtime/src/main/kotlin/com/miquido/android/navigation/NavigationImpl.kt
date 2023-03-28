@@ -1,16 +1,13 @@
 package com.miquido.android.navigation
 
-import dagger.hilt.android.scopes.ActivityRetainedScoped
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
-import javax.inject.Inject
 
-@ActivityRetainedScoped
-internal class NavigationImpl @Inject constructor() : Navigation {
+internal class NavigationImpl : Navigation() {
 
     private val navActions = mutableMapOf<NavEntryId, Channel<NavAction>>()
     private val navResults = mutableMapOf<NavEntryId, Channel<NavResult>>()

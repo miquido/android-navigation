@@ -10,12 +10,13 @@ import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavController
+import com.miquido.android.navigation.viewmodel.AbstractNavigationViewModel
 import kotlinx.coroutines.launch
 import java.io.Serializable
 
 @Composable
 internal fun NavEntryResultsSender(
-    viewModel: NavigationViewModel,
+    viewModel: AbstractNavigationViewModel,
     navController: NavController,
     currNavEntry: NavBackStackEntry
 ) {
@@ -50,7 +51,7 @@ private suspend fun markCancelledIfPreviousNavEntryIsRecipient(
 }
 
 private suspend fun handlePublishingNavEntryResult(
-    viewModel: NavigationViewModel,
+    viewModel: AbstractNavigationViewModel,
     currNavEntry: NavBackStackEntry,
     prevNavEntry: NavBackStackEntry
 ) = viewModel.navResults

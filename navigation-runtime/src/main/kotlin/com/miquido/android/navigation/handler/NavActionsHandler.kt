@@ -7,12 +7,13 @@ import androidx.lifecycle.flowWithLifecycle
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavController
 import com.miquido.android.navigation.NavAction
+import com.miquido.android.navigation.viewmodel.AbstractNavigationViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 @Composable
 internal fun NavActionsHandler(
-    viewModel: NavigationViewModel,
+    viewModel: AbstractNavigationViewModel,
     navController: NavController,
     navEntry: NavBackStackEntry
 ) = LaunchedEffect(viewModel, navController, navEntry) {

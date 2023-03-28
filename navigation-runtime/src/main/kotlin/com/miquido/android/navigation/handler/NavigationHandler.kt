@@ -3,18 +3,20 @@ package com.miquido.android.navigation.handler
 import androidx.activity.result.contract.ActivityResultContract
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.miquido.android.navigation.navEntryViewModel
+import com.miquido.android.navigation.viewmodel.AbstractNavigationViewModel
 import kotlin.reflect.KClass
 
 @Composable
 fun NavigationHandler(
-    navController: NavController
+    navController: NavController,
+    navigationViewModelProvider: @Composable (NavBackStackEntry) -> AbstractNavigationViewModel
 ) {
     val currentNavEntry by navController.currentBackStackEntryAsState()
     currentNavEntry?.let { navEntry ->
-        val navigationViewModel = navEntryViewModel<NavigationViewModel>(navEntry)
+        val navigationViewModel = navigationViewModelProvider(navEntry)
         NavActionsHandler(
             viewModel = navigationViewModel,
             navController = navController,

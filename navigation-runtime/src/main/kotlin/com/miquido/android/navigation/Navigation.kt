@@ -3,19 +3,23 @@ package com.miquido.android.navigation
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.StateFlow
 
-internal interface Navigation {
-    fun navActions(navEntryId: NavEntryId): Flow<NavAction>
-    fun navResults(navEntryId: NavEntryId): Flow<NavResult>
-    fun resultLaunches(navEntryId: NavEntryId): Flow<NavResultLaunch>
-    fun resultCallbacks(navEntryId: NavEntryId): StateFlow<Set<NavResultCallback>>
+abstract class Navigation {
+    internal abstract fun navActions(navEntryId: NavEntryId): Flow<NavAction>
+    internal abstract fun navResults(navEntryId: NavEntryId): Flow<NavResult>
+    internal abstract fun resultLaunches(navEntryId: NavEntryId): Flow<NavResultLaunch>
+    internal abstract fun resultCallbacks(navEntryId: NavEntryId): StateFlow<Set<NavResultCallback>>
 
-    suspend fun dispatchAction(navEntryId: NavEntryId, navAction: NavAction)
+    internal abstract suspend fun dispatchAction(navEntryId: NavEntryId, navAction: NavAction)
 
-    suspend fun dispatchResult(navEntryId: NavEntryId, navResult: NavResult)
-    suspend fun dispatchResultLaunch(navEntryId: NavEntryId, launch: NavResultLaunch)
+    internal abstract suspend fun dispatchResult(navEntryId: NavEntryId, navResult: NavResult)
+    internal abstract suspend fun dispatchResultLaunch(navEntryId: NavEntryId, launch: NavResultLaunch)
 
-    fun addResultCallback(navEntryId: NavEntryId, registration: NavResultCallback)
-    fun removeResultCallback(navEntryId: NavEntryId, registration: NavResultCallback)
+    internal abstract fun addResultCallback(navEntryId: NavEntryId, registration: NavResultCallback)
+    internal abstract fun removeResultCallback(navEntryId: NavEntryId, registration: NavResultCallback)
 
-    fun clear(navEntryId: NavEntryId)
+    internal abstract fun clear(navEntryId: NavEntryId)
+
+    companion object Default {
+        operator fun invoke(): Navigation = NavigationImpl()
+    }
 }

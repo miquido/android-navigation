@@ -11,6 +11,7 @@ import androidx.lifecycle.Lifecycle.State.RESUMED
 import androidx.lifecycle.flowWithLifecycle
 import androidx.navigation.NavBackStackEntry
 import com.miquido.android.navigation.NavResultCallback
+import com.miquido.android.navigation.viewmodel.AbstractNavigationViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.filterIsInstance
@@ -19,7 +20,7 @@ import kotlinx.coroutines.launch
 
 @Composable
 internal fun ActivityResultsRecipient(
-    viewModel: NavigationViewModel,
+    viewModel: AbstractNavigationViewModel,
     navEntry: NavBackStackEntry
 ) {
     val activityResultRegistry = checkNotNull(LocalActivityResultRegistryOwner.current) {
@@ -42,7 +43,7 @@ internal fun ActivityResultsRecipient(
 
 @OptIn(ExperimentalCoroutinesApi::class)
 private suspend fun registerActivityResultContracts(
-    viewModel: NavigationViewModel,
+    viewModel: AbstractNavigationViewModel,
     navEntry: NavBackStackEntry,
     launchers: MutableMap<String, ActivityResultLauncher<Any>>,
     activityResultRegistry: ActivityResultRegistry
@@ -56,7 +57,7 @@ private suspend fun registerActivityResultContracts(
     }
 
 private suspend fun handleActivityResultLaunches(
-    viewModel: NavigationViewModel,
+    viewModel: AbstractNavigationViewModel,
     navEntry: NavBackStackEntry,
     launchers: Map<String, ActivityResultLauncher<Any>>
 ) = viewModel.resultLaunches

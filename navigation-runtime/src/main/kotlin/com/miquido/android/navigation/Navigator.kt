@@ -70,6 +70,10 @@ interface Navigator {
      * @return flow of results. Received `null`'s means cancellation.
      */
     fun <I, O> registerForResult(contract: ActivityResultContract<I, O>): Flow<O?>
+
+    companion object Default {
+        operator fun invoke(navigation: Navigation, navEntryId: NavEntryId): Navigator = NavigatorImpl(navigation, navEntryId)
+    }
 }
 
 @JvmName("launchForResultWithVoidInput")

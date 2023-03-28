@@ -1,25 +1,17 @@
 package com.miquido.android.navigation
 
 import androidx.activity.result.contract.ActivityResultContract
-import androidx.lifecycle.SavedStateHandle
 import androidx.navigation.NavOptionsBuilder
 import androidx.navigation.navOptions
-import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
-import javax.inject.Inject
 import kotlin.reflect.KClass
 
-@ViewModelScoped
-internal class NavigatorImpl internal constructor(
+internal class NavigatorImpl(
     private val navigation: Navigation,
     private val navEntryId: NavEntryId
 ) : Navigator {
-
-    @Inject
-    constructor(navigation: Navigation, savedStateHandle: SavedStateHandle) :
-        this(navigation, savedStateHandle.getNavEntryId())
 
     override suspend fun navigate(direction: String, builder: NavOptionsBuilder.() -> Unit) {
         navigation.dispatchAction(navEntryId, NavAction.To(direction, navOptions(builder)))
