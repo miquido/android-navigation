@@ -1,0 +1,19 @@
+apply plugin: 'maven-publish'
+
+afterEvaluate {
+    publishing {
+        repositories {
+            mavenLocal()
+        }
+
+        publications {
+            // Creates a Maven publication called "release".
+            release(MavenPublication) {
+                from components.release
+
+                groupId = project.group
+                version = project.version
+            }
+        }
+    }
+}

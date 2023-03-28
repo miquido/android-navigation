@@ -1,4 +1,4 @@
-package com.miquido.navigation
+package com.miquido.navigation.runtime
 
 import org.junit.Test
 

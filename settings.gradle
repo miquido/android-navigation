@@ -13,4 +13,8 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Navigation"
-include ':app'
+
+include ":app"
+include ":navigation-runtime"
+
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
