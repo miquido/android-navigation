@@ -21,8 +21,8 @@ internal fun NavActionsHandler(
         .collect { action ->
             withContext(Dispatchers.Main) {
                 when (action) {
-                    is NavAction.To -> navController.navigate(action.direction.route, action.options)
-                    is NavAction.Pop -> navController.popBackStack(action.route.route, action.inclusive, action.saveState)
+                    is NavAction.To -> navController.navigate(action.direction, action.options)
+                    is NavAction.Pop -> navController.popBackStack(action.route, action.inclusive, action.saveState)
                     is NavAction.Up -> navController.navigateUp()
                 }
             }

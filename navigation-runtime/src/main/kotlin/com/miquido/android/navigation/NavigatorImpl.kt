@@ -4,8 +4,6 @@ import androidx.activity.result.contract.ActivityResultContract
 import androidx.lifecycle.SavedStateHandle
 import androidx.navigation.NavOptionsBuilder
 import androidx.navigation.navOptions
-import com.ramcosta.composedestinations.spec.Direction
-import com.ramcosta.composedestinations.spec.Route
 import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
@@ -23,11 +21,11 @@ internal class NavigatorImpl internal constructor(
     constructor(navigation: Navigation, savedStateHandle: SavedStateHandle) :
         this(navigation, savedStateHandle.getNavEntryId())
 
-    override suspend fun navigate(direction: Direction, builder: NavOptionsBuilder.() -> Unit) {
+    override suspend fun navigate(direction: String, builder: NavOptionsBuilder.() -> Unit) {
         navigation.dispatchAction(navEntryId, NavAction.To(direction, navOptions(builder)))
     }
 
-    override suspend fun popBackStack(route: Route, inclusive: Boolean, saveState: Boolean) {
+    override suspend fun popBackStack(route: String, inclusive: Boolean, saveState: Boolean) {
         navigation.dispatchAction(navEntryId, NavAction.Pop(route, inclusive, saveState))
     }
 
@@ -39,9 +37,9 @@ internal class NavigatorImpl internal constructor(
         navigation.dispatchResult(navEntryId, NavResult(result))
     }
 
-    override fun <O : Any> registerForResult(origin: Route, type: KClass<O>): Flow<O?> = callbackFlow {
+    override fun <O : Any> registerForResult(originRoute: String, type: KClass<O>): Flow<O?> = callbackFlow {
         val registration = NavResultCallback.NavEntry.create(
-            origin = origin,
+            originRoute = originRoute,
             type = type,
             onResult = ::trySend
         )

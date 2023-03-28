@@ -1,39 +1,38 @@
 package com.miquido.android.navigation
 
 import androidx.activity.result.contract.ActivityResultContract
-import com.ramcosta.composedestinations.spec.Route
 import kotlin.reflect.KClass
 
-sealed class NavResultCallback(
+internal sealed class NavResultCallback(
     open val onResult: (Any?) -> Unit
 ) {
-    class Activity internal constructor(
+    class Activity private constructor(
         val contract: ActivityResultContract<Any, Any>,
         override val onResult: (Any?) -> Unit
     ) : NavResultCallback(onResult) {
 
         companion object {
             @Suppress("UNCHECKED_CAST")
-            internal fun <I, O> create(
+            fun <I, O> create(
                 contract: ActivityResultContract<I, O>,
                 onResult: (O?) -> Unit
             ): Activity = Activity(contract as ActivityResultContract<Any, Any>, onResult as (Any?) -> Unit)
         }
     }
 
-    class NavEntry internal constructor(
-        val origin: Route,
+    class NavEntry private constructor(
+        val originRoute: String,
         val type: KClass<*>,
         override val onResult: (Any?) -> Unit
     ) : NavResultCallback(onResult) {
 
         companion object {
             @Suppress("UNCHECKED_CAST")
-            internal fun <O : Any> create(
-                origin: Route,
+            fun <O : Any> create(
+                originRoute: String,
                 type: KClass<O>,
                 onResult: (O?) -> Unit
-            ): NavEntry = NavEntry(origin, type, onResult as (Any?) -> Unit)
+            ): NavEntry = NavEntry(originRoute, type, onResult as (Any?) -> Unit)
         }
     }
 }

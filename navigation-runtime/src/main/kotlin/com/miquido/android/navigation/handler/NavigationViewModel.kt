@@ -20,8 +20,11 @@ internal class NavigationViewModel @Inject constructor(
 
     val navActions: Flow<NavAction> = navigation.navActions(navEntryId)
         .shareIn(scope = viewModelScope, started = SharingStarted.WhileSubscribed())
+
     val navResults: Flow<NavResult> = navigation.navResults(navEntryId)
+
     val resultLaunches: Flow<NavResultLaunch> = navigation.resultLaunches(navEntryId)
+
     val resultCallbacks: Flow<Set<NavResultCallback>> = navigation.resultCallbacks(navEntryId)
 
     override fun onCleared() {

@@ -16,5 +16,6 @@ rootProject.name = "Navigation"
 
 include ":app"
 include ":navigation-runtime"
+include ':navigation-destinations'
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")

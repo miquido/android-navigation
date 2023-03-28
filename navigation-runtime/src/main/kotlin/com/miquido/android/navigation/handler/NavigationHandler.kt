@@ -6,7 +6,6 @@ import androidx.compose.runtime.getValue
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.miquido.android.navigation.navEntryViewModel
-import com.ramcosta.composedestinations.spec.Route
 import kotlin.reflect.KClass
 
 @Composable
@@ -46,11 +45,11 @@ internal fun activityResultKey(
 internal fun navEntryRecipientOfKey() = "nav-entry@recipient-of"
 
 internal fun <R : Any> navEntryResultKey(
-    origin: Route,
+    originRoute: String,
     resultType: KClass<out R>
-) = "nav-entry@${origin.route}@${resultType.qualifiedName}@result"
+) = "nav-entry@$originRoute@${resultType.qualifiedName}@result"
 
 internal fun <R : Any> navEntryCanceledKey(
-    origin: Route,
+    originRoute: String,
     resultType: KClass<out R>
-) = "nav-entry@${origin.route}@${resultType.qualifiedName}@canceled"
+) = "nav-entry@$originRoute@${resultType.qualifiedName}@canceled"

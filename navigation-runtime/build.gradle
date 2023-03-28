@@ -12,11 +12,6 @@ version projectVersionName
 android {
     namespace "com.miquido.android.navigation.runtime"
 
-    defaultConfig {
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles "consumer-rules.pro"
-    }
-
     buildFeatures {
         compose true
     }
@@ -34,7 +29,10 @@ dependencies {
     implementation libs.hilt.android
     kapt libs.hilt.compiler
 
-    implementation libs.destinations.core
+    implementation libs.androidx.compose.foundation
+    implementation libs.androidx.compose.runtime
+    implementation libs.androidx.compose.ui
+    implementation libs.androidx.navigation.compose
 
     testImplementation libs.junit
     testImplementation libs.mockk

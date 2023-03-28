@@ -10,9 +10,6 @@ import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavController
-import com.ramcosta.composedestinations.spec.Route
-import com.ramcosta.composedestinations.utils.navGraph
-import com.ramcosta.composedestinations.utils.route
 import kotlinx.coroutines.launch
 import java.io.Serializable
 
@@ -40,12 +37,12 @@ private suspend fun markCancelledIfPreviousNavEntryIsRecipient(
     currNavEntry: NavBackStackEntry,
     prevNavEntry: NavBackStackEntry
 ) = currNavEntry.lifecycle.repeatOnLifecycle(CREATED) {
-    val origin = currNavEntry.resultOrigin()
+    val originRoute = currNavEntry.resultOriginRoute()
     val recipientOfKey = navEntryRecipientOfKey()
     val recipientOf = prevNavEntry.savedStateHandle.get<Bundle>(recipientOfKey)
-    if (recipientOf?.containsKey(origin.route) == true) {
-        val type = requireNotNull(recipientOf.serializable<Class<*>>(origin.route)).kotlin
-        val canceledKey = navEntryCanceledKey(origin, type)
+    if (recipientOf?.containsKey(originRoute) == true) {
+        val type = requireNotNull(recipientOf.serializable<Class<*>>(originRoute)).kotlin
+        val canceledKey = navEntryCanceledKey(originRoute, type)
         if (!prevNavEntry.savedStateHandle.contains(canceledKey)) {
             prevNavEntry.savedStateHandle[canceledKey] = true
         }
@@ -59,17 +56,17 @@ private suspend fun handlePublishingNavEntryResult(
 ) = viewModel.navResults
     .flowWithLifecycle(currNavEntry.lifecycle, CREATED)
     .collect { navResult ->
-        val origin = currNavEntry.resultOrigin()
-        val resultKey = navEntryResultKey(origin, navResult.value::class)
-        val canceledKey = navEntryCanceledKey(origin, navResult.value::class)
+        val originRoute = currNavEntry.resultOriginRoute()
+        val resultKey = navEntryResultKey(originRoute, navResult.value::class)
+        val canceledKey = navEntryCanceledKey(originRoute, navResult.value::class)
         prevNavEntry.savedStateHandle[canceledKey] = false
         prevNavEntry.savedStateHandle[resultKey] = navResult.value
     }
 
-private fun NavBackStackEntry.resultOrigin(): Route {
-    val navGraph = navGraph()
-    val isGraphStartDestination = navGraph.startRoute == route()
-    return if (isGraphStartDestination) navGraph else route()
+private fun NavBackStackEntry.resultOriginRoute(): String {
+    val navGraph = requireNotNull(destination.parent)
+    val isGraphStartDestination = navGraph.startDestinationRoute == destination.route
+    return requireNotNull(if (isGraphStartDestination) navGraph.route else destination.route)
 }
 
 @Suppress("DEPRECATION")

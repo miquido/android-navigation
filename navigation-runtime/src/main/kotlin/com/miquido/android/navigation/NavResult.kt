@@ -1,5 +1,5 @@
 package com.miquido.android.navigation
 
-data class NavResult internal constructor(
+internal data class NavResult(
     val value: Any
 )

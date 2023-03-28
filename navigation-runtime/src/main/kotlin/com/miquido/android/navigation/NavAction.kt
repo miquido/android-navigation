@@ -2,22 +2,24 @@ package com.miquido.android.navigation
 
 import androidx.navigation.NavOptions
 import androidx.navigation.navOptions
-import com.ramcosta.composedestinations.spec.Direction
-import com.ramcosta.composedestinations.spec.Route
 
 val EMPTY_OPTIONS = navOptions {}
 
 sealed class NavAction {
     data class To(
-        val direction: Direction,
+        val direction: String,
         val options: NavOptions = EMPTY_OPTIONS
-    ) : NavAction()
+    ) : NavAction() {
+        companion object
+    }
 
     data class Pop(
-        val route: Route,
+        val route: String,
         val inclusive: Boolean,
         val saveState: Boolean = false
-    ) : NavAction()
+    ) : NavAction() {
+        companion object
+    }
 
     object Up : NavAction()
 }

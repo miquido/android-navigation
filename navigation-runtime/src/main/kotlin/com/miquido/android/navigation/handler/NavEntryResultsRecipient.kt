@@ -40,7 +40,7 @@ private fun attachNavEntryRecipientOfInformation(
     set(
         key = recipientOfKey,
         value = recipientOfBundle.apply {
-            putSerializable(registration.origin.route, registration.type.java)
+            putSerializable(registration.originRoute, registration.type.java)
         }
     )
 }
@@ -49,8 +49,8 @@ private suspend fun checkForAvailableNavEntryResults(
     navEntry: NavBackStackEntry,
     registration: NavResultCallback.NavEntry
 ) = navEntry.repeatOnLifecycle(STARTED) {
-    val resultKey = navEntryResultKey(registration.origin, registration.type)
-    val canceledKey = navEntryCanceledKey(registration.origin, registration.type)
+    val resultKey = navEntryResultKey(registration.originRoute, registration.type)
+    val canceledKey = navEntryCanceledKey(registration.originRoute, registration.type)
 
     with(navEntry.savedStateHandle) {
         if (remove<Boolean>(canceledKey) == true) {
