@@ -1,5 +1,6 @@
 package com.miquido.android.navigation
 
+import android.net.Uri
 import androidx.activity.result.contract.ActivityResultContract
 import androidx.navigation.NavOptionsBuilder
 import kotlinx.coroutines.flow.Flow
@@ -13,7 +14,8 @@ import kotlin.reflect.KClass
  */
 interface Navigator {
     /**
-     * Navigate to a route in the current NavGraph. If an invalid route is given, an IllegalArgumentException will be thrown.
+     * Navigate to a route in the current NavGraph.
+     * If an invalid route is given, an IllegalArgumentException will be thrown.
      *
      * @param direction route for the destination
      * @param builder DSL for constructing a new [androidx.navigation.NavOptions]
@@ -21,6 +23,15 @@ interface Navigator {
      * @see [androidx.navigation.NavController.navigate]
      */
     suspend fun navigate(direction: String, builder: NavOptionsBuilder.() -> Unit = {})
+
+    /**
+     * Navigate to a destination via the given deep link Uri.
+     * If an invalid deep link is given, an IllegalArgumentException will be thrown.
+     *
+     * @param deeplink deepLink to the destination reachable from the current NavGraph
+     * @param builder DSL for constructing a new [androidx.navigation.NavOptions]
+     */
+    suspend fun navigate(deeplink: Uri, builder: NavOptionsBuilder.() -> Unit = {})
 
     /**
      * Attempts to pop back stack.
@@ -72,12 +83,15 @@ interface Navigator {
     fun <I, O> registerForResult(contract: ActivityResultContract<I, O>): Flow<O?>
 
     companion object Default {
-        operator fun invoke(navigation: Navigation, navEntryId: NavEntryId): Navigator = NavigatorImpl(navigation, navEntryId)
+        operator fun invoke(navigation: Navigation, navEntryId: NavEntryId): Navigator =
+            NavigatorImpl(navigation, navEntryId)
     }
 }
 
 @JvmName("launchForResultWithVoidInput")
-suspend fun Navigator.launchForResult(contract: KClass<out ActivityResultContract<Void?, *>>) = launchForResult(contract, null)
+suspend fun Navigator.launchForResult(contract: KClass<out ActivityResultContract<Void?, *>>) =
+    launchForResult(contract, null)
 
 @JvmName("launchForResultWithUnitInput")
-suspend fun Navigator.launchForResult(contract: KClass<out ActivityResultContract<Unit, *>>) = launchForResult(contract, Unit)
+suspend fun Navigator.launchForResult(contract: KClass<out ActivityResultContract<Unit, *>>) =
+    launchForResult(contract, Unit)

@@ -1,5 +1,6 @@
 package com.miquido.android.navigation
 
+import android.net.Uri
 import androidx.navigation.NavOptions
 import androidx.navigation.navOptions
 
@@ -12,6 +13,11 @@ sealed class NavAction {
     ) : NavAction() {
         companion object
     }
+
+    data class Deeplink(
+        val uri: Uri,
+        val options: NavOptions = EMPTY_OPTIONS
+    ) : NavAction()
 
     data class Pop(
         val route: String,

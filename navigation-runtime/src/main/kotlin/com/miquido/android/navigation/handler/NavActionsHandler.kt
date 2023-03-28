@@ -23,6 +23,7 @@ internal fun NavActionsHandler(
             withContext(Dispatchers.Main) {
                 when (action) {
                     is NavAction.To -> navController.navigate(action.direction, action.options)
+                    is NavAction.Deeplink -> navController.navigate(action.uri, action.options)
                     is NavAction.Pop -> navController.popBackStack(action.route, action.inclusive, action.saveState)
                     is NavAction.Up -> navController.navigateUp()
                 }

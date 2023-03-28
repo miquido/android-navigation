@@ -20,7 +20,7 @@ internal class NavigationTest {
     private val navigator = NavigatorImpl(navigation, NavEntryId("nav-entry"))
 
     @Test
-    fun `navigator navigate is emitted as nav to action`() = runTest {
+    fun `navigator navigate with direction is emitted as nav to action`() = runTest {
         val direction = "dashboard"
         val options: NavOptionsBuilder.() -> Unit = {
             popUpTo("authentication") {
@@ -32,6 +32,22 @@ internal class NavigationTest {
 
         navigation.navActions(NavEntryId("nav-entry")).test {
             assertThat(awaitItem()).isEqualTo(NavAction.To(direction, navOptions(options)))
+        }
+    }
+
+    @Test
+    fun `navigator navigate with deeplink is emitted as deeplink action`() = runTest {
+        val deeplink = mockk<Uri>()
+        val options: NavOptionsBuilder.() -> Unit = {
+            popUpTo("authentication") {
+                inclusive = true
+            }
+        }
+
+        navigator.navigate(deeplink, options)
+
+        navigation.navActions(NavEntryId("nav-entry")).test {
+            assertThat(awaitItem()).isEqualTo(NavAction.Deeplink(deeplink, navOptions(options)))
         }
     }
 

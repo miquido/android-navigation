@@ -1,5 +1,6 @@
 package com.miquido.android.navigation
 
+import android.net.Uri
 import androidx.activity.result.contract.ActivityResultContract
 import androidx.navigation.NavOptionsBuilder
 import androidx.navigation.navOptions
@@ -15,6 +16,10 @@ internal class NavigatorImpl(
 
     override suspend fun navigate(direction: String, builder: NavOptionsBuilder.() -> Unit) {
         navigation.dispatchAction(navEntryId, NavAction.To(direction, navOptions(builder)))
+    }
+
+    override suspend fun navigate(deeplink: Uri, builder: NavOptionsBuilder.() -> Unit) {
+        navigation.dispatchAction(navEntryId, NavAction.Deeplink(deeplink, navOptions(builder)))
     }
 
     override suspend fun popBackStack(route: String, inclusive: Boolean, saveState: Boolean) {
