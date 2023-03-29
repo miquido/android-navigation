@@ -14,6 +14,9 @@ internal class NavigatorImpl(
     private val navEntryId: NavEntryId
 ) : Navigator {
 
+    override val previousNavEntry: NavEntryInfo?
+        get() = navigation.previousNavEntry
+
     override suspend fun navigate(direction: String, builder: NavOptionsBuilder.() -> Unit) {
         navigation.dispatchAction(navEntryId, NavAction.To(direction, navOptions(builder)))
     }

@@ -20,6 +20,15 @@ internal class NavigationTest {
     private val navigator = NavigatorImpl(navigation, NavEntryId("nav-entry"))
 
     @Test
+    fun `navigator stores provided previous nav entry info`() = runTest {
+        val prevNavEntryInfo = NavEntryInfo(NavEntryId("prev-nav-entry"), "prev-route", null)
+
+        navigation.setPreviousNavEntry(prevNavEntryInfo)
+
+        assertThat(navigator.previousNavEntry).isEqualTo(prevNavEntryInfo)
+    }
+
+    @Test
     fun `navigator navigate with direction is emitted as nav to action`() = runTest {
         val direction = "dashboard"
         val options: NavOptionsBuilder.() -> Unit = {

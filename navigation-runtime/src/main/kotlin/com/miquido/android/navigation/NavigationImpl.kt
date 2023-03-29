@@ -6,13 +6,19 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
+import kotlinx.coroutines.flow.update
 
+@Suppress("TooManyFunctions")
 internal class NavigationImpl : Navigation() {
 
+    private val _previousNavEntry = MutableStateFlow<NavEntryInfo?>(null)
     private val navActions = mutableMapOf<NavEntryId, Channel<NavAction>>()
     private val navResults = mutableMapOf<NavEntryId, Channel<NavResult>>()
     private val navResultLaunches = mutableMapOf<NavEntryId, Channel<NavResultLaunch>>()
     private val navResultCallbacks = mutableMapOf<NavEntryId, MutableStateFlow<Set<NavResultCallback>>>()
+
+    override val previousNavEntry: NavEntryInfo?
+        get() = _previousNavEntry.value
 
     override fun navActions(navEntryId: NavEntryId): Flow<NavAction> =
         navActions.retrieve(navEntryId).receiveAsFlow()
@@ -48,6 +54,10 @@ internal class NavigationImpl : Navigation() {
         navResultCallbacks[navEntryId]?.run {
             tryEmit(value - registration)
         }
+    }
+
+    override fun setPreviousNavEntry(prevNavEntryInfo: NavEntryInfo?) {
+        _previousNavEntry.update { prevNavEntryInfo }
     }
 
     override fun clear(navEntryId: NavEntryId) {

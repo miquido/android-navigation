@@ -13,6 +13,14 @@ import kotlin.reflect.KClass
  * - receiving and sending data between nav entries (using [androidx.navigation.NavBackStackEntry.savedStateHandle])
  */
 interface Navigator {
+
+    /**
+     * Provides information about previous visible NavBackStackEntry.
+     *
+     * @see [androidx.navigation.NavController.previousBackStackEntry]
+     */
+    val previousNavEntry: NavEntryInfo?
+
     /**
      * Navigate to a route in the current NavGraph.
      * If an invalid route is given, an IllegalArgumentException will be thrown.

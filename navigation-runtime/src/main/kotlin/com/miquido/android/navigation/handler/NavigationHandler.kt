@@ -2,10 +2,13 @@ package com.miquido.android.navigation.handler
 
 import androidx.activity.result.contract.ActivityResultContract
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
+import com.miquido.android.navigation.NavEntryId
+import com.miquido.android.navigation.NavEntryInfo
 import com.miquido.android.navigation.viewmodel.AbstractNavigationViewModel
 import kotlin.reflect.KClass
 
@@ -35,7 +38,29 @@ fun NavigationHandler(
             viewModel = navigationViewModel,
             navEntry = navEntry
         )
+        StorePreviousNavEntryInfo(
+            viewModel = navigationViewModel,
+            navController = navController,
+            currNavEntry = navEntry
+        )
     }
+}
+
+@Composable
+private fun StorePreviousNavEntryInfo(
+    viewModel: AbstractNavigationViewModel,
+    navController: NavController,
+    currNavEntry: NavBackStackEntry
+) = LaunchedEffect(currNavEntry) {
+    val prevNavEntryInfo = navController.previousBackStackEntry
+        ?.let { navEntry ->
+            NavEntryInfo(
+                id = NavEntryId(navEntry.id),
+                route = navEntry.destination.route,
+                arguments = navEntry.arguments
+            )
+        }
+    viewModel.setPreviousNavEntry(prevNavEntryInfo)
 }
 
 internal fun activityResultKey(

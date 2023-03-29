@@ -4,6 +4,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.miquido.android.navigation.NavAction
+import com.miquido.android.navigation.NavEntryInfo
 import com.miquido.android.navigation.NavResult
 import com.miquido.android.navigation.NavResultCallback
 import com.miquido.android.navigation.NavResultLaunch
@@ -28,6 +29,10 @@ abstract class AbstractNavigationViewModel(
     internal val resultLaunches: Flow<NavResultLaunch> = navigation.resultLaunches(navEntryId)
 
     internal val resultCallbacks: Flow<Set<NavResultCallback>> = navigation.resultCallbacks(navEntryId)
+
+    internal fun setPreviousNavEntry(prevNavEntryInfo: NavEntryInfo?) {
+        navigation.setPreviousNavEntry(prevNavEntryInfo)
+    }
 
     final override fun onCleared() {
         super.onCleared()
