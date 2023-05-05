@@ -1,0 +1,16 @@
+plugins {
+    id "com.android.library"
+    id "org.jetbrains.kotlin.android"
+}
+
+apply from: "$rootDir/gradle/publishing.gradle"
+
+android {
+    namespace "com.miquido.android.navigation.destinations"
+}
+
+dependencies {
+    implementation projects.navigationRuntime
+
+    implementation libs.destinations.core
+}

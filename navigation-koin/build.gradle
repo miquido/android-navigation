@@ -1,0 +1,29 @@
+plugins {
+    id "com.android.library"
+    id "org.jetbrains.kotlin.android"
+}
+
+apply from: "$rootDir/gradle/publishing.gradle"
+
+android {
+    namespace "com.miquido.android.navigation.koin"
+
+    buildFeatures {
+        compose true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion libs.versions.androidx.compose.compiler.get()
+    }
+}
+
+dependencies {
+    implementation projects.navigationRuntime
+
+    implementation libs.androidx.compose.runtime
+    implementation libs.androidx.compose.ui
+    implementation libs.androidx.navigation.runtime
+    implementation libs.androidx.startup.runtime
+
+    implementation libs.koin.androidx.compose
+}

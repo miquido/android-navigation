@@ -13,4 +13,12 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Navigation"
-include ':app'
+
+include ":navigation-runtime"
+include ":navigation-destinations"
+include ":navigation-hilt"
+include ":navigation-koin"
+
+include ":sample-koin"
+
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
