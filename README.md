@@ -92,7 +92,7 @@ Using this artifact provides additional kotlin extension methods for:
 
 The repository contains few samples - showcasing:
 - koin integration [sample-koin](/sample-koin)
-- **TBD** hilt integration [sample-hilt](/sample-hilt)
+- hilt integration [sample-hilt](/sample-hilt)
 - **TBD** compose destination integration [sample-destinations](/sample-destinations)
 
 ## About

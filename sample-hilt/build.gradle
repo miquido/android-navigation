@@ -1,13 +1,15 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.hilt)
+    alias(libs.plugins.kotlin.kapt)
 }
 
 android {
-    namespace "com.miquido.android.navigation.koin.sample"
+    namespace "com.miquido.android.navigation.hilt.sample"
 
     defaultConfig {
-        applicationId "com.miquido.android.navigation.koin.sample"
+        applicationId "com.miquido.android.navigation.hilt.sample"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -29,7 +31,7 @@ android {
 
 dependencies {
     implementation projects.navigationRuntime
-    implementation projects.navigationKoin
+    implementation projects.navigationHilt
 
     implementation libs.androidx.compose.runtime
     implementation libs.androidx.compose.ui
@@ -39,5 +41,6 @@ dependencies {
     implementation libs.androidx.navigation.compose
     implementation libs.androidx.lifecycle.viewmodel.ktx
 
-    implementation libs.koin.androidx.compose
+    implementation libs.hilt.android
+    kapt libs.hilt.compiler
 }
