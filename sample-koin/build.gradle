@@ -4,10 +4,10 @@ plugins {
 }
 
 android {
-    namespace "com.miquido.android.navigation"
+    namespace "com.miquido.android.navigation.koin.sample"
 
     defaultConfig {
-        applicationId "com.miquido.android.navigation.sample"
+        applicationId "com.miquido.android.navigation.koin.sample"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 

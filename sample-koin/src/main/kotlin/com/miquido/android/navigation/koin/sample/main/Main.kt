@@ -1,4 +1,4 @@
-package com.miquido.android.navigation.sample.main
+package com.miquido.android.navigation.koin.sample.main
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState

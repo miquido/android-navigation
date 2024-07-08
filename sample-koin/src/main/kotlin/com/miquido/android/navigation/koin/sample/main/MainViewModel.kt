@@ -1,4 +1,4 @@
-package com.miquido.android.navigation.sample.main
+package com.miquido.android.navigation.koin.sample.main
 
 import android.net.Uri
 import androidx.activity.result.contract.ActivityResultContracts

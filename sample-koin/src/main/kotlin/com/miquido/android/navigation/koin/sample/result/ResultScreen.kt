@@ -1,4 +1,4 @@
-package com.miquido.android.navigation.sample.next
+package com.miquido.android.navigation.koin.sample.result
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -13,8 +13,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun NextScreen(
-    onNavigateUp: () -> Unit
+fun ResultScreen(
+    onNavigateUpWithResult: () -> Unit,
+    onClose: () -> Unit
 ) = Box(Modifier.fillMaxSize()) {
     Column(
         modifier = Modifier
@@ -22,15 +23,22 @@ fun NextScreen(
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         Text(
-            text = "I am Next Screen!",
+            text = "I am Result Screen!",
             modifier = Modifier.padding(12.dp)
         )
         Button(
             modifier = Modifier
                 .align(Alignment.CenterHorizontally),
-            onClick = onNavigateUp
+            onClick = onNavigateUpWithResult
         ) {
-            Text(text = "Navigate Up")
+            Text(text = "Navigate Up with result")
+        }
+        Button(
+            modifier = Modifier
+                .align(Alignment.CenterHorizontally),
+            onClick = onClose
+        ) {
+            Text(text = "Close")
         }
     }
 }

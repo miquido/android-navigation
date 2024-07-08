@@ -1,4 +1,4 @@
-package com.miquido.android.navigation.sample.result
+package com.miquido.android.navigation.koin.sample.result
 
 import androidx.compose.runtime.Composable
 import com.miquido.android.navigation.viewmodel.navEntryViewModel

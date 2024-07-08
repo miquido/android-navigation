@@ -1,4 +1,4 @@
-package com.miquido.android.navigation.sample.next
+package com.miquido.android.navigation.koin.sample.next
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

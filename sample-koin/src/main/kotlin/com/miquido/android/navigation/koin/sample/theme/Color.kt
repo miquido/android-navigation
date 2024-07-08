@@ -1,4 +1,4 @@
-package com.miquido.android.navigation.sample.theme
+package com.miquido.android.navigation.koin.sample.theme
 
 import androidx.compose.ui.graphics.Color
 

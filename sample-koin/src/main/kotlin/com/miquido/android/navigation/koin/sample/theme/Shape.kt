@@ -1,4 +1,4 @@
-package com.miquido.android.navigation.sample.theme
+package com.miquido.android.navigation.koin.sample.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes

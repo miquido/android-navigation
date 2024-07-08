@@ -1,4 +1,4 @@
-package com.miquido.android.navigation.sample
+package com.miquido.android.navigation.koin.sample
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
@@ -9,9 +9,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.miquido.android.navigation.handler.NavigationHandler
-import com.miquido.android.navigation.sample.main.Main
-import com.miquido.android.navigation.sample.next.Next
-import com.miquido.android.navigation.sample.result.Result
+import com.miquido.android.navigation.koin.sample.main.Main
+import com.miquido.android.navigation.koin.sample.next.Next
+import com.miquido.android.navigation.koin.sample.result.Result
 
 @Composable
 fun AppRoot() {

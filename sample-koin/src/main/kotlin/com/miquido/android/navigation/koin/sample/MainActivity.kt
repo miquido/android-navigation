@@ -1,9 +1,9 @@
-package com.miquido.android.navigation.sample
+package com.miquido.android.navigation.koin.sample
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import com.miquido.android.navigation.sample.theme.AppTheme
+import com.miquido.android.navigation.koin.sample.theme.AppTheme
 
 class MainActivity : ComponentActivity() {
 

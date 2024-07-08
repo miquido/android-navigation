@@ -1,4 +1,4 @@
-package com.miquido.android.navigation.sample.next
+package com.miquido.android.navigation.koin.sample.next
 
 import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.dsl.module
