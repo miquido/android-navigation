@@ -38,12 +38,6 @@ def setupAndroid(isApp) {
             buildTypes.release.minifyEnabled false
         }
 
-        /* remove after https://issuetracker.google.com/issues/260059413 */
-        compileOptions {
-            sourceCompatibility JavaVersion.VERSION_11
-            targetCompatibility JavaVersion.VERSION_11
-        }
-
         lintOptions {
             checkDependencies true
             checkReleaseBuilds false
@@ -89,7 +83,7 @@ def setupKspSourceSets(variants) {
         def name = variant.name
         kotlin.sourceSets {
             getByName(name) {
-                kotlin.srcDirs += ["$buildDir/generated/ksp/$name/kotlin"]
+                kotlin.srcDirs += ["$layout.buildDirectory/generated/ksp/$name/kotlin"]
             }
         }
     }

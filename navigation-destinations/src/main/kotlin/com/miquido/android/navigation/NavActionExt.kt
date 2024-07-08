@@ -27,6 +27,7 @@ private data class RouteIml(
     override val baseRoute: String = route
 ) : DirectionDestinationSpec {
     @Composable
+    @Suppress("ktlint:standard:function-expression-body")
     override fun DestinationScope<Unit>.Content() {
         throw IllegalStateException("Shouldn't be used as `Direction` to navigate.")
     }
