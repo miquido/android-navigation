@@ -1,4 +1,5 @@
 pluginManagement {
+    includeBuild("gradle/build-logic")
     repositories {
         google()
         mavenCentral()
@@ -6,7 +7,7 @@ pluginManagement {
     }
 }
 dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositoriesMode = RepositoriesMode.FAIL_ON_PROJECT_REPOS
     repositories {
         google()
         mavenCentral()
@@ -14,12 +15,12 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Navigation"
 
-include ":navigation-runtime"
-include ":navigation-destinations"
-include ":navigation-hilt"
-include ":navigation-koin"
+include(":navigation-runtime")
+include(":navigation-destinations")
+include(":navigation-hilt")
+include(":navigation-koin")
 
-include ':sample-hilt'
-include ":sample-koin"
+include(":sample-hilt")
+include(":sample-koin")
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")

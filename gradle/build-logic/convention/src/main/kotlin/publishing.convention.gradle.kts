@@ -1,11 +1,16 @@
-apply plugin: "maven-publish"
-apply plugin: "signing"
+import com.android.build.api.dsl.LibraryExtension
+import com.miquido.projectVersionName
 
-group "com.miquido.android.navigation"
-version projectVersionName
+plugins {
+    id("maven-publish")
+    id("signing")
+}
 
-plugins.withId("com.android.library") {
-    android {
+group = "com.miquido.android.navigation"
+version = projectVersionName
+
+if (pluginManager.hasPlugin("com.android.library")) {
+    extensions.configure<LibraryExtension> {
         publishing {
             singleVariant("release") {
                 withSourcesJar()
@@ -14,41 +19,38 @@ plugins.withId("com.android.library") {
         }
     }
     afterEvaluate {
-        setupPublishing(components.release)
+        setupPublishing(components["release"])
     }
 }
 
-plugins.withId("java-library") {
-    java {
+if (pluginManager.hasPlugin("java-library")) {
+    extensions.configure<JavaPluginExtension> {
         withSourcesJar()
         withJavadocJar()
     }
-
     afterEvaluate {
-        setupPublishing(components.java)
+        setupPublishing(components["java"])
     }
 }
 
-def setupPublishing(component) {
+fun setupPublishing(component: SoftwareComponent) {
     publishing {
         repositories {
             maven {
                 name = "sonatype"
-                url = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
+                url = uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
                 credentials {
                     // Credentials should be stored in the gradle.properties file in the user’s Gradle home directory
-                    username findProperty("sonatype.user")
-                    password findProperty("sonatype.password")
+                    username = findProperty("sonatype.user").toString()
+                    password = findProperty("sonatype.password").toString()
                 }
             }
         }
-
         publications {
-            release(MavenPublication) {
-                from component
-
-                groupId = project.group
-                version = project.version
+            register<MavenPublication>("release") {
+                groupId = project.group.toString()
+                version = project.version.toString()
+                from(component)
 
                 pom {
                     name = "Compose Navigator"
@@ -81,5 +83,5 @@ def setupPublishing(component) {
 signing {
     // Credentials should be configured according to
     // https://docs.gradle.org/current/userguide/signing_plugin.html#sec:signatory_credentials
-    sign publishing.publications
+    sign(publishing.publications)
 }

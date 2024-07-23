@@ -1,3 +1,0 @@
-ext.isSourcesModule = {
-    it.file("src/main/kotlin").exists() && it.name != "buildSrc"
-}

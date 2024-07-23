@@ -12,7 +12,6 @@ import androidx.lifecycle.flowWithLifecycle
 import androidx.navigation.NavBackStackEntry
 import com.miquido.android.navigation.NavResultCallback
 import com.miquido.android.navigation.viewmodel.AbstractNavigationViewModel
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.filterIsInstance
 import kotlinx.coroutines.flow.flatMapLatest
@@ -41,7 +40,6 @@ internal fun ActivityResultsRecipient(
     }
 }
 
-@OptIn(ExperimentalCoroutinesApi::class)
 private suspend fun registerActivityResultContracts(
     viewModel: AbstractNavigationViewModel,
     navEntry: NavBackStackEntry,

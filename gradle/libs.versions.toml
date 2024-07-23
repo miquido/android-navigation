@@ -1,5 +1,6 @@
 [versions]
 agp = "8.5.0"
+androidTools = "31.5.1"
 kotlin = "2.0.0"
 kotlinx-coroutines = "1.8.1"
 androidx-compose = "1.6.8"
@@ -17,8 +18,8 @@ junit = "4.13.2"
 mockk = "1.13.11"
 truth = "1.4.3"
 turbine = "1.1.0"
-versions = "0.51.0"
-versionCatalogUpdate = "0.8.4"
+deps-update-scanner = "0.51.0"
+deps-catalog-updater = "0.8.4"
 
 [libraries]
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
@@ -46,6 +47,14 @@ mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 truth = { module = "com.google.truth:truth", version.ref = "truth" }
 turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
 
+# Dependencies of the included build-logic
+android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "agp" }
+android-tools-common = { group = "com.android.tools", name = "common", version.ref = "androidTools" }
+kotlin-compose-gradlePlugin = { module = "org.jetbrains.kotlin:compose-compiler-gradle-plugin", version.ref = "kotlin" }
+kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
+deps-update-scanner-gradlePlugin = { module = "com.github.ben-manes:gradle-versions-plugin", version.ref = "deps-update-scanner" }
+deps-catalog-updater-gradlePlugin = { module = "nl.littlerobots.vcu:plugin", version.ref = "deps-catalog-updater" }
+
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
@@ -53,5 +62,3 @@ kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
-versions = { id = "com.github.ben-manes.versions", version.ref = "versions" }
-versionCatalogUpdate = { id = "nl.littlerobots.version-catalog-update", version.ref = "versionCatalogUpdate" }
