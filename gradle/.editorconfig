@@ -1,4 +1,11 @@
 [*.{kt,kts}]
+ktlint_code_style = android_studio
+ktlint_function_naming_ignore_when_annotated_with = Composable
+ktlint_standard_import-ordering = disabled
+ktlint_standard_function-signature = disabled
+ktlint_standard_class-signature = disabled
+ktlint_standard_function-expression-body = disabled
+ktlint_standard_enum-wrapping = disabled
 indent_size = 4
 ij_continuation_indent_size = 4
 insert_final_newline = true

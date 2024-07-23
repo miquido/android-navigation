@@ -19,6 +19,7 @@ include ":navigation-destinations"
 include ":navigation-hilt"
 include ":navigation-koin"
 
+include ':sample-hilt'
 include ":sample-koin"
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")

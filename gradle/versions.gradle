@@ -1,7 +1,7 @@
 ext {
     projectVersionName = "1.0.0-beta"
     projectVersionCode = 1
-    projectCompileSdk = 33
+    projectCompileSdk = 34
     projectMinSdk = 23
-    projectTargetSdk = 33
+    projectTargetSdk = 34
 }

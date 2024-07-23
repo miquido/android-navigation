@@ -1,106 +1,57 @@
 [versions]
-# Android/Kotlin
-android-gradle-plugin = "7.4.2"
-kotlin = "1.8.10" # KSP needs to be updated accordingly
-ksp = "1.8.10-1.0.9" # Most recent version corresponding to the used kotlin version can be found here https://github.com/google/ksp/releases
-# General plugins
-versions = "0.46.0"
-versionCatalogUpdate = "0.8.0"
-licensee = "1.6.0"
-# Quality
-detekt = "1.22.0"
-ktlint = "0.48.2"
-# Testing
-junit = "4.13.2"
-truth = "1.1.3"
-mockk = "1.13.3"
-androidx-test-runners = "1.5.2"
-androidx-test-rules = "1.5.0"
-androidx-test-ext-junit = "1.1.5"
-androidx-test-ext-truth = "1.5.0"
-androidx-test-orchestrator = "1.4.2"
-turbine = "0.12.1"
-# KotlinX
-kotlinx-coroutines = "1.6.4"
-# AndroidX
-androidx-activity = "1.6.1"
-androidx-annotation = "1.5.0"
-androidx-appcompat = "1.6.1"
-androidx-core = "1.9.0"
-androidx-lifecycle = "2.6.0-beta01"
-androidx-navigation = "2.6.0-alpha07"
+agp = "8.5.0"
+kotlin = "2.0.0"
+kotlinx-coroutines = "1.8.1"
+androidx-compose = "1.6.8"
+androidx-core = "1.13.1"
+androidx-lifecycle = "2.8.3"
+androidx-material = "1.6.8"
+androidx-navigation = "2.7.7"
 androidx-startup = "1.1.1"
-# Navigation
-compose-destinations = "1.8.36-beta"
-# Compose
-androidx-compose-compiler = "1.4.3"
-androidx-compose = "1.4.0-rc01"
-androidx-material = "1.3.1"
-# Dependency injection
-hilt = "2.45"
-koin = "3.4.2"
+compose-destinations = "1.10.2"
+hilt = "2.51.1"
+koin = "3.5.6"
+detekt = "1.23.6"
+ktlint = "1.3.1"
+junit = "4.13.2"
+mockk = "1.13.11"
+truth = "1.4.3"
+turbine = "1.1.0"
+versions = "0.51.0"
+versionCatalogUpdate = "0.8.4"
 
 [libraries]
-# Quality
-detekt = { module = "io.gitlab.arturbosch.detekt:detekt-cli", version.ref = "detekt" }
-detekt-rules-libraries = { module = "io.gitlab.arturbosch.detekt:detekt-rules-libraries", version.ref = "detekt" }
-ktlint = { module = "com.pinterest:ktlint", version.ref = "ktlint" }
-# Testing
-junit = { module = "junit:junit", version.ref = "junit" }
-truth = { module = "com.google.truth:truth", version.ref = "truth" }
-mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
-androidx-test-runner = { module = "androidx.test:runner", version.ref = "androidx-test-runners" }
-androidx-test-rules = { module = "androidx.test:rules", version.ref = "androidx-test-rules" }
-androidx-test-ext-junit = { module = "androidx.test.ext:junit", version.ref = "androidx-test-ext-junit" }
-androidx-test-ext-truth = { module = "androidx.test.ext:truth", version.ref = "androidx-test-ext-truth" }
-androidx-test-orchestrator = { module = "androidx.test:orchestrator", version.ref = "androidx-test-orchestrator" }
-turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
-# KotlinX
-kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinx-coroutines" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
 kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinx-coroutines" }
-# AndroidX
-androidx-annotation = { module = "androidx.annotation:annotation", version.ref = "androidx-annotation" }
-androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "androidx-appcompat" }
-androidx-core = { module = "androidx.core:core", version.ref = "androidx-core" }
-androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidx-core" }
-androidx-lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel", version.ref = "androidx-lifecycle" }
-androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "androidx-lifecycle" }
-androidx-navigation-common = { module = "androidx.navigation:navigation-common", version.ref = "androidx-navigation" }
-androidx-navigation-runtime = { module = "androidx.navigation:navigation-runtime", version.ref = "androidx-navigation" }
-androidx-navigation-testing = { module = "androidx.navigation:navigation-testing", version.ref = "androidx-navigation" }
-androidx-startup-runtime = { module = "androidx.startup:startup-runtime", version.ref = "androidx-startup" }
-# Compose
-androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity" }
+androidx-compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "androidx-compose" }
 androidx-compose-material = { module = "androidx.compose.material:material", version.ref = "androidx-material" }
 androidx-compose-runtime = { module = "androidx.compose.runtime:runtime", version.ref = "androidx-compose" }
 androidx-compose-ui = { module = "androidx.compose.ui:ui", version.ref = "androidx-compose" }
-androidx-compose-ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "androidx-compose" }
-androidx-compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "androidx-compose" }
-androidx-compose-compiler = { module = "androidx.compose.compiler:compiler", version.ref = "androidx-compose-compiler" }
+androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidx-core" }
 androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "androidx-lifecycle" }
+androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "androidx-lifecycle" }
+androidx-navigation-common = { module = "androidx.navigation:navigation-common", version.ref = "androidx-navigation" }
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "androidx-navigation" }
-# Navigation
+androidx-navigation-runtime = { module = "androidx.navigation:navigation-runtime", version.ref = "androidx-navigation" }
+androidx-startup-runtime = { module = "androidx.startup:startup-runtime", version.ref = "androidx-startup" }
 destinations-core = { module = "io.github.raamcosta.compose-destinations:animations-core", version.ref = "compose-destinations" }
-destinations-ksp = { module = "io.github.raamcosta.compose-destinations:ksp", version.ref = "compose-destinations" }
-# Dependency injection
-hilt-core = { module = "com.google.dagger:hilt-core", version.ref = "hilt" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
-hilt-android-testing = { module = "com.google.dagger:hilt-android-testing", version.ref = "hilt" }
 hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt" }
-koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin"}
+koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin" }
+ktlint = { module = "com.pinterest.ktlint:ktlint-cli", version.ref = "ktlint" }
+detekt = { module = "io.gitlab.arturbosch.detekt:detekt-cli", version.ref = "detekt" }
+detekt-rules-libraries = { module = "io.gitlab.arturbosch.detekt:detekt-rules-libraries", version.ref = "detekt" }
+junit = { module = "junit:junit", version.ref = "junit" }
+mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
+truth = { module = "com.google.truth:truth", version.ref = "truth" }
+turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
 
 [plugins]
-# Android/Kotlin
-android-application = { id = "com.android.application", version.ref = "android-gradle-plugin" }
-android-library = { id = "com.android.library", version.ref = "android-gradle-plugin" }
-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+android-application = { id = "com.android.application", version.ref = "agp" }
+android-library = { id = "com.android.library", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
-# General plugins
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 versions = { id = "com.github.ben-manes.versions", version.ref = "versions" }
 versionCatalogUpdate = { id = "nl.littlerobots.version-catalog-update", version.ref = "versionCatalogUpdate" }
-licensee = { id = "app.cash.licensee", version.ref = "licensee" }
-# Dependency injection
-hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }

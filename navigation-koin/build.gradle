@@ -1,6 +1,7 @@
 plugins {
-    id "com.android.library"
-    id "org.jetbrains.kotlin.android"
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.compose)
 }
 
 apply from: "$rootDir/gradle/publishing.gradle"
@@ -11,10 +12,6 @@ android {
     buildFeatures {
         compose true
     }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion libs.versions.androidx.compose.compiler.get()
-    }
 }
 
 dependencies {
@@ -22,6 +19,7 @@ dependencies {
 
     implementation libs.androidx.compose.runtime
     implementation libs.androidx.compose.ui
+
     implementation libs.androidx.navigation.runtime
     implementation libs.androidx.startup.runtime
 
