@@ -11,13 +11,11 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.NavBackStackEntry
 import com.miquido.android.navigation.NavResultCallback
 import com.miquido.android.navigation.viewmodel.AbstractNavigationViewModel
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.filterIsInstance
 import kotlinx.coroutines.flow.flatMapLatest
 
 @Composable
-@OptIn(ExperimentalCoroutinesApi::class)
 internal fun NavEntryResultsRecipient(
     viewModel: AbstractNavigationViewModel,
     navEntry: NavBackStackEntry
