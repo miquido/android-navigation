@@ -1,4 +1,4 @@
-@file:JvmName("NavigationHandlerKoin")
+@file:JvmName("NavigationHandlerKoinComposable")
 
 package com.miquido.android.navigation.handler
 

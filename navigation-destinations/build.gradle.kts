@@ -1,6 +1,7 @@
 plugins {
     id("android-library.convention")
     id("publishing.convention")
+    id("kover.convention")
 }
 
 android {

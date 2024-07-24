@@ -22,6 +22,7 @@ dependencies {
     implementation(libs.android.tools.common)
     implementation(libs.kotlin.gradlePlugin)
     implementation(libs.kotlin.compose.gradlePlugin)
+    implementation(libs.kotlin.kover.gradlePlugin)
     implementation(libs.deps.update.scanner.gradlePlugin)
     implementation(libs.deps.catalog.updater.gradlePlugin)
 }

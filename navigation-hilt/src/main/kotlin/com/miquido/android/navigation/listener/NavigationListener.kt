@@ -1,4 +1,4 @@
-@file:JvmName("NavigationListenerHilt")
+@file:JvmName("NavigationListenerHiltComposable")
 
 package com.miquido.android.navigation.listener
 

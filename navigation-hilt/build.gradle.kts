@@ -3,6 +3,7 @@ plugins {
     id("android-library.compose.convention")
     id("publishing.convention")
     alias(libs.plugins.kotlin.kapt)
+    id("kover.convention")
 }
 
 android {

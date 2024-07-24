@@ -1,3 +1,5 @@
+@file:JvmName("NavigationListenerComposable")
+
 package com.miquido.android.navigation.listener
 
 import androidx.compose.runtime.Composable

@@ -1,4 +1,4 @@
-@file:JvmName("NavigationListenerKoin")
+@file:JvmName("NavigationListenerKoinComposable")
 
 package com.miquido.android.navigation.listener
 

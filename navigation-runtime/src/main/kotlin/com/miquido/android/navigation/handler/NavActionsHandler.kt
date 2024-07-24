@@ -1,3 +1,5 @@
+@file:JvmName("NavActionsHandlerComposable")
+
 package com.miquido.android.navigation.handler
 
 import androidx.compose.runtime.Composable

@@ -1,3 +1,5 @@
+@file:JvmName("NavigationHandlerComposable")
+
 package com.miquido.android.navigation.handler
 
 import androidx.activity.result.contract.ActivityResultContract

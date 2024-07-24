@@ -3,6 +3,7 @@ agp = "8.5.1"
 androidTools = "31.5.1"
 kotlin = "2.0.0"
 kotlinx-coroutines = "1.8.1"
+kotlin-kover = "0.8.3"
 androidx-compose = "1.6.8"
 androidx-core = "1.13.1"
 androidx-lifecycle = "2.8.4"
@@ -68,6 +69,7 @@ android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", ver
 android-tools-common = { group = "com.android.tools", name = "common", version.ref = "androidTools" }
 kotlin-compose-gradlePlugin = { module = "org.jetbrains.kotlin:compose-compiler-gradle-plugin", version.ref = "kotlin" }
 kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
+kotlin-kover-gradlePlugin = { group = "org.jetbrains.kotlinx", name = "kover-gradle-plugin", version.ref = "kotlin-kover" }
 deps-update-scanner-gradlePlugin = { module = "com.github.ben-manes:gradle-versions-plugin", version.ref = "deps-update-scanner" }
 deps-catalog-updater-gradlePlugin = { module = "nl.littlerobots.vcu:plugin", version.ref = "deps-catalog-updater" }
 
