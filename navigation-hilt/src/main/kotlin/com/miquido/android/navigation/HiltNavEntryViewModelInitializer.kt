@@ -5,9 +5,9 @@ import androidx.startup.Initializer
 import com.miquido.android.navigation.viewmodel.NavEntryViewModelProvider
 
 @Suppress("UNUSED")
-internal class NavEntryKoinViewModelInitializer : Initializer<Unit> {
+internal class HiltNavEntryViewModelInitializer : Initializer<Unit> {
     override fun create(context: Context) {
-        NavEntryViewModelProvider.factory = NavEntryKoinViewModelFactory()
+        NavEntryViewModelProvider.factory = HiltNavEntryViewModelFactory()
     }
 
     override fun dependencies(): List<Class<out Initializer<*>>> = emptyList()

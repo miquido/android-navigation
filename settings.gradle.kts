@@ -23,4 +23,6 @@ include(":navigation-koin")
 include(":sample-hilt")
 include(":sample-koin")
 
+include(":instrumented-tests")
+
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
