@@ -15,7 +15,7 @@ import androidx.navigation.NavBackStackEntry
 import com.miquido.android.navigation.viewmodel.NavEntryViewModelFactory
 import dagger.hilt.android.internal.lifecycle.HiltViewModelFactory
 
-internal class NavEntryHiltViewModelFactory : NavEntryViewModelFactory {
+internal class HiltNavEntryViewModelFactory : NavEntryViewModelFactory {
     @Composable
     override fun <VM : ViewModel> get(
         modelClass: Class<VM>,

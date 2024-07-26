@@ -10,7 +10,7 @@
             android:exported="false"
             tools:node="merge">
             <meta-data
-                android:name="com.miquido.android.navigation.NavEntryKoinViewModelInitializer"
+                android:name="com.miquido.android.navigation.KoinNavEntryViewModelInitializer"
                 android:value="androidx.startup" />
         </provider>
     </application>

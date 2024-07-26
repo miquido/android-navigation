@@ -10,7 +10,7 @@
             android:exported="false"
             tools:node="merge">
             <meta-data
-                android:name="com.miquido.android.navigation.NavEntryHiltViewModelInitializer"
+                android:name="com.miquido.android.navigation.HiltNavEntryViewModelInitializer"
                 android:value="androidx.startup" />
         </provider>
     </application>

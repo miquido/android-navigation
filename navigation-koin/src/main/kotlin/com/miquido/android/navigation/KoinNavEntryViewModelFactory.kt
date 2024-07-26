@@ -14,7 +14,7 @@ import org.koin.core.annotation.KoinInternalApi
 import org.koin.core.context.GlobalContext
 import org.koin.core.parameter.parametersOf
 
-internal class NavEntryKoinViewModelFactory : NavEntryViewModelFactory {
+internal class KoinNavEntryViewModelFactory : NavEntryViewModelFactory {
 
     @Composable
     @OptIn(KoinInternalApi::class)
