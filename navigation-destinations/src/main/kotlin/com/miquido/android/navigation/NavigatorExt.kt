@@ -7,14 +7,14 @@ import kotlinx.coroutines.flow.Flow
 import kotlin.reflect.KClass
 
 /**
- * Navigate to a route in the current NavGraph. If an invalid route is given, an IllegalArgumentException will be thrown.
+ * Navigate to a destination in the current NavGraph. If an invalid route is given, an IllegalArgumentException will be thrown.
  *
  * @param direction route for the destination
  * @param builder DSL for constructing a new [androidx.navigation.NavOptions]
  *
  * @see [androidx.navigation.NavController.navigate]
  */
-suspend fun Navigator.navigate(direction: Direction, builder: NavOptionsBuilder.() -> Unit = {}) =
+suspend fun Navigator.navigateToDirection(direction: Direction, builder: NavOptionsBuilder.() -> Unit = {}) =
     navigate(direction.route, builder)
 
 /**
@@ -27,7 +27,7 @@ suspend fun Navigator.navigate(direction: Direction, builder: NavOptionsBuilder.
  *
  * @see [androidx.navigation.NavController.popBackStack]
  */
-suspend fun Navigator.popBackStack(route: Route, inclusive: Boolean, saveState: Boolean = false) =
+suspend fun Navigator.popBackToRoute(route: Route, inclusive: Boolean, saveState: Boolean = false) =
     popBackStack(route.route, inclusive, saveState)
 
 /**

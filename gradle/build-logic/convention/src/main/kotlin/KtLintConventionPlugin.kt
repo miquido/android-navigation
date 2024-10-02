@@ -19,13 +19,12 @@ class KtLintConventionPlugin : Plugin<Project> {
                 mainClass.set("com.pinterest.ktlint.Main")
                 inputs.files(fileTree("src").matching {
                     include("**/*.kt")
-                    exclude("test/**/*.kt", "androidTest/**/*.kt")
                 })
                 outputs.file("build/reports/ktlint-report.xml")
                 outputs.cacheIf { true }
 
                 args = listOf(
-                    "src/**/*.kt", "!src/test/**/*.kt", "!src/androidTest/**/*.kt",
+                    "src/**/*.kt",
                     "--editorconfig=${rootDir}/.codeStyleConfig/.editorconfig",
                     "--reporter=checkstyle,output=build/reports/ktlint-report.xml",
                     "--reporter=plain"

@@ -12,6 +12,19 @@ import com.miquido.android.navigation.handler.NavigationHandler
 import com.miquido.android.navigation.hilt.sample.main.Main
 import com.miquido.android.navigation.hilt.sample.next.Next
 import com.miquido.android.navigation.hilt.sample.result.Result
+import kotlinx.serialization.Serializable
+
+@Serializable
+data object RootRoute
+
+@Serializable
+data object StartRoute
+
+@Serializable
+data object NextRoute
+
+@Serializable
+data object ResultRoute
 
 @Composable
 fun AppRoot() {
@@ -27,16 +40,16 @@ fun AppRoot() {
 
         NavHost(
             navController = navController,
-            route = "root",
-            startDestination = "start"
+            route = RootRoute::class,
+            startDestination = StartRoute
         ) {
-            composable("start") {
+            composable<StartRoute> {
                 Main()
             }
-            composable("next") {
+            composable<NextRoute> {
                 Next()
             }
-            composable("result") {
+            composable<ResultRoute> {
                 Result()
             }
         }

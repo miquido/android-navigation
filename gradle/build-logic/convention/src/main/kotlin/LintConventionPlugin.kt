@@ -39,6 +39,7 @@ class LintConventionPlugin : Plugin<Project> {
             "JavaPluginLanguageLevel",
             "AndroidGradlePluginVersion",
             "EnsureInitializerMetadata",
+            "ObsoleteLintCustomCheck",
             "VectorPath"
         )
     }

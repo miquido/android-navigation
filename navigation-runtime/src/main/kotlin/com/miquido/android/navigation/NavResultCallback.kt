@@ -1,7 +1,9 @@
 package com.miquido.android.navigation
 
 import androidx.activity.result.contract.ActivityResultContract
+import androidx.navigation.NavType
 import kotlin.reflect.KClass
+import kotlin.reflect.KType
 
 internal sealed class NavResultCallback(
     open val onResult: (Any?) -> Unit
@@ -32,7 +34,23 @@ internal sealed class NavResultCallback(
                 originRoute: String,
                 type: KClass<O>,
                 onResult: (O?) -> Unit
-            ): NavEntry = NavEntry(originRoute, type, onResult as (Any?) -> Unit)
+            ): NavEntry = NavEntry(
+                originRoute = originRoute,
+                type = type,
+                onResult = onResult as (Any?) -> Unit
+            )
+
+            @Suppress("UNCHECKED_CAST")
+            fun <O : Any> create(
+                originRoute: Any,
+                originRouteTypeMap: Map<KType, @JvmSuppressWildcards NavType<*>>,
+                type: KClass<O>,
+                onResult: (O?) -> Unit
+            ): NavEntry = NavEntry(
+                originRoute = generateRoutePattern(originRoute, originRouteTypeMap),
+                type = type,
+                onResult = onResult as (Any?) -> Unit
+            )
         }
     }
 }

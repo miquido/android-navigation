@@ -20,10 +20,16 @@
             android:name=".activity.ActivityBackResultPublisherActivity"
             android:exported="true" />
         <activity
-            android:name=".activity.NavEntryBackResultActivity"
+            android:name=".activity.NavEntryStringRoutesBackResultActivity"
             android:exported="true" />
         <activity
-            android:name=".activity.ForthAndBackNavigationActivity"
+            android:name=".activity.NavEntrySerializableRoutesBackResultActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.ForthAndBackStringRoutesNavigationActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.ForthAndBackSerializableRoutesNavigationActivity"
             android:exported="true" />
     </application>
 

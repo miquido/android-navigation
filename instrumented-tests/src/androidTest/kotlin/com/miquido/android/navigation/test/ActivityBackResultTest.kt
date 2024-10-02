@@ -91,5 +91,4 @@ class ActivityBackResultTest(
         @JvmStatic
         fun data() = listOf(false, true)
     }
-
 }
