@@ -26,8 +26,11 @@ private class TestNavEntryViewModelProviderRule(
                     navigation,
                     TestViewModelFactory(builder)
                 )
-                base.evaluate()
-                NavEntryViewModelProvider.reset()
+                try {
+                    base.evaluate()
+                } finally {
+                    NavEntryViewModelProvider.reset()
+                }
             }
         }
     }
