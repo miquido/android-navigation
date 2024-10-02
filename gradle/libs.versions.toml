@@ -4,8 +4,8 @@ android-minSdk = "23"
 android-targetSdk = "34"
 android-version-versionName = "1.0.0"
 
-agp = "8.6.1"
-androidTools = "31.6.1"
+agp = "8.7.0"
+androidTools = "31.7.0"
 kotlin = "2.0.20"
 kotlinx-coroutines = "1.9.0"
 kotlin-kover = "0.8.3"
@@ -17,6 +17,8 @@ androidx-navigation = "2.7.7"
 androidx-startup = "1.2.0"
 androidx-test = "1.6.1"
 androidx-test-ext = "1.2.1"
+androidx-test-rules = "1.6.1"
+androidx-test-runner = "1.6.2"
 androidx-espresso = "3.6.1"
 androidx-espresso-device = "1.0.1"
 androidx-espresso-intents = "3.6.1"
@@ -51,8 +53,8 @@ androidx-navigation-runtime = { module = "androidx.navigation:navigation-runtime
 androidx-startup-runtime = { module = "androidx.startup:startup-runtime", version.ref = "androidx-startup" }
 androidx-test-core = { group = "androidx.test", name = "core", version.ref = "androidx-test" }
 androidx-test-ext = { group = "androidx.test.ext", name = "junit-ktx", version.ref = "androidx-test-ext" }
-androidx-test-rules = { group = "androidx.test", name = "rules", version.ref = "androidx-test" }
-androidx-test-runner = { group = "androidx.test", name = "runner", version.ref = "androidx-test" }
+androidx-test-rules = { group = "androidx.test", name = "rules", version.ref = "androidx-test-rules" }
+androidx-test-runner = { group = "androidx.test", name = "runner", version.ref = "androidx-test-runner" }
 androidx-test-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "androidx-espresso" }
 androidx-test-espresso-device = { group = "androidx.test.espresso", name = "espresso-device", version.ref = "androidx-espresso-device" }
 androidx-test-espresso-intents = { group = "androidx.test.espresso", name = "espresso-intents", version.ref = "androidx-espresso-intents" }
