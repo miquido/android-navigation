@@ -5,5 +5,6 @@ plugins {
     alias(libs.plugins.kotlin.compose) apply false
     alias(libs.plugins.kotlin.kapt) apply false
     alias(libs.plugins.hilt) apply false
-    id("deps-management.convention") apply true
+    alias(libs.plugins.kover.aggregation)
+    alias(libs.plugins.dependecy.management)
 }

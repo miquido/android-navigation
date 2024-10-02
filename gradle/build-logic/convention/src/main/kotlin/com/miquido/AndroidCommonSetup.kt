@@ -2,6 +2,7 @@ package com.miquido
 
 import com.android.build.api.dsl.CommonExtension
 import org.gradle.api.Project
+import org.gradle.kotlin.dsl.dependencies
 
 internal fun Project.configureAndroid(
     commonExtension: CommonExtension<*, *, *, *, *, *>
@@ -19,6 +20,8 @@ internal fun Project.configureAndroid(
         unitTests {
             isIncludeAndroidResources = true
             all {
+                it.useJUnitPlatform()
+                it.jvmArgs(it.jvmArgs.orEmpty() + "-Xshare:off")
                 it.maxParallelForks = Runtime.getRuntime().availableProcessors() - 1
             }
         }

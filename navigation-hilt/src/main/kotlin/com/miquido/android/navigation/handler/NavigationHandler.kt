@@ -1,4 +1,4 @@
-@file:JvmName("NavigationHandlerHilt")
+@file:JvmName("NavigationHandlerHiltComposable")
 
 package com.miquido.android.navigation.handler
 

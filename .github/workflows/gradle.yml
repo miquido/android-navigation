@@ -37,7 +37,7 @@ jobs:
         run: ./gradlew ktlint detekt sample-hilt:lintDebug sample-koin:lintDebug
 
       - name: Run unit tests
-        run: ./gradlew testDebugUnitTest
+        run: ./gradlew koverHtmlReportMain
 
       - name: Upload lint reports
         if: always()

@@ -1,8 +1,14 @@
 [versions]
+android-compileSdk = "34"
+android-minSdk = "23"
+android-targetSdk = "34"
+android-version-versionName = "1.0.0"
+
 agp = "8.6.1"
 androidTools = "31.6.1"
 kotlin = "2.0.20"
 kotlinx-coroutines = "1.9.0"
+kotlin-kover = "0.8.3"
 androidx-compose = "1.7.2"
 androidx-core = "1.13.1"
 androidx-lifecycle = "2.8.6"
@@ -20,7 +26,7 @@ hilt = "2.52"
 koin = "3.5.6"
 detekt = "1.23.7"
 ktlint = "1.3.1"
-junit = "4.13.2"
+junit5 = "5.11.0"
 mockk = "1.13.12"
 truth = "1.4.4"
 turbine = "1.1.0"
@@ -58,7 +64,8 @@ koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose", versi
 ktlint = { module = "com.pinterest.ktlint:ktlint-cli", version.ref = "ktlint" }
 detekt = { module = "io.gitlab.arturbosch.detekt:detekt-cli", version.ref = "detekt" }
 detekt-rules-libraries = { module = "io.gitlab.arturbosch.detekt:detekt-rules-libraries", version.ref = "detekt" }
-junit = { module = "junit:junit", version.ref = "junit" }
+junit5-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit5" }
+junit5-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit5" }
 mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 truth = { module = "com.google.truth:truth", version.ref = "truth" }
 turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
@@ -68,8 +75,19 @@ android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", ver
 android-tools-common = { group = "com.android.tools", name = "common", version.ref = "androidTools" }
 kotlin-compose-gradlePlugin = { module = "org.jetbrains.kotlin:compose-compiler-gradle-plugin", version.ref = "kotlin" }
 kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
+kotlin-kover-gradlePlugin = { module = "org.jetbrains.kotlinx:kover-gradle-plugin", version.ref = "kotlin-kover" }
 deps-update-scanner-gradlePlugin = { module = "com.github.ben-manes:gradle-versions-plugin", version.ref = "deps-update-scanner" }
 deps-catalog-updater-gradlePlugin = { module = "nl.littlerobots.vcu:plugin", version.ref = "deps-catalog-updater" }
+
+[bundles]
+test = [
+    "junit5-api",
+    "junit5-engine",
+    "mockk",
+    "truth",
+    "turbine",
+    "kotlinx-coroutines-test"
+]
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -78,3 +96,13 @@ kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+# Plugins defined by this project
+android-application-convention = { id = "android-application.convention" }
+android-application-compose-convention = { id = "android-application.compose.convention" }
+android-library-convention = { id = "android-library.convention" }
+android-library-compose-convention = { id = "android-library.compose.convention" }
+android-test-convention = { id = "android-test.convention" }
+jvm-library-convention = { id = "jvm-library.convention" }
+kover-aggregation = { id = "kover.aggregation" }
+publishing = { id = "publishing.convention" }
+dependecy-management = { id = "dependecy.management.convention" }
