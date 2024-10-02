@@ -1,5 +1,7 @@
 package com.miquido.android.navigation.test.ui
 
+import androidx.compose.animation.EnterTransition
+import androidx.compose.animation.ExitTransition
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
@@ -27,7 +29,9 @@ fun ActivityRoot(
             navController = navController,
             route = "root",
             startDestination = startDestination,
-            builder = builder
+            builder = builder,
+            enterTransition = { EnterTransition.None },
+            exitTransition = { ExitTransition.None }
         )
     }
 }

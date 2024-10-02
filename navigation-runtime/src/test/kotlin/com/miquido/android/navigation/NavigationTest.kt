@@ -9,7 +9,7 @@ import app.cash.turbine.turbineScope
 import com.google.common.truth.Truth.assertThat
 import io.mockk.mockk
 import kotlinx.coroutines.test.runTest
-import org.junit.Test
+import org.junit.jupiter.api.Test
 
 internal class NavigationTest {
 
@@ -96,7 +96,6 @@ internal class NavigationTest {
         }
     }
 
-    @Suppress("UNCHECKED_CAST")
     @Test
     fun `navigator activity result callback is automatically stored in and remove from result callbacks`() = runTest {
         turbineScope {
@@ -120,7 +119,6 @@ internal class NavigationTest {
         }
     }
 
-    @Suppress("UNCHECKED_CAST")
     @Test
     fun `navigator activity result flow emits value when callback invoked`() = runTest {
         turbineScope {
@@ -145,7 +143,6 @@ internal class NavigationTest {
     }
 
 
-    @Suppress("UNCHECKED_CAST")
     @Test
     fun `navigator nav entry result callback is automatically stored in and remove from result callbacks`() = runTest {
         turbineScope {
@@ -169,7 +166,6 @@ internal class NavigationTest {
         }
     }
 
-    @Suppress("UNCHECKED_CAST")
     @Test
     fun `navigator nav entry result flow emits value when callback invoked`() = runTest {
         turbineScope {

@@ -77,7 +77,10 @@ class NavEntryBackResultTest(
 
         onNodeWithText("I am `$PUBLISHER_ROUT` Screen!")
             .assertIsDisplayed()
-        if (withOrientationChange) onDevice().setScreenOrientation(LANDSCAPE)
+        if (withOrientationChange) {
+            onDevice().setScreenOrientation(LANDSCAPE)
+            Thread.sleep(500)
+        }
         Espresso.pressBack()
 
         onNodeWithText("I am `$RECEIVER_ROUT` Screen!")

@@ -1,7 +1,7 @@
 plugins {
-    id("android-library.convention")
-    id("android-library.compose.convention")
-    id("publishing.convention")
+    alias(libs.plugins.android.library.convention)
+    alias(libs.plugins.android.library.compose.convention)
+    alias(libs.plugins.publishing)
 }
 
 android {
@@ -9,14 +9,10 @@ android {
 }
 
 dependencies {
-    implementation (libs.androidx.navigation.runtime)
-    implementation (libs.androidx.navigation.compose)
+    implementation(libs.androidx.navigation.runtime)
+    implementation(libs.androidx.navigation.compose)
 
-    implementation (libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.coroutines.core)
 
-    testImplementation (libs.junit)
-    testImplementation (libs.mockk)
-    testImplementation (libs.truth)
-    testImplementation (libs.kotlinx.coroutines.test)
-    testImplementation (libs.turbine)
+    testImplementation(libs.bundles.test)
 }

@@ -1,3 +1,5 @@
+@file:JvmName("NavEntryResultsRecipientComposable")
+
 package com.miquido.android.navigation.handler
 
 import android.os.Bundle

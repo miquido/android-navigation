@@ -23,12 +23,12 @@ internal fun Project.configureKotlinJvm() {
  */
 private inline fun <reified T : KotlinTopLevelExtension> Project.configureKotlin() = configure<T> {
     // Treat all Kotlin warnings as errors (disabled by default)
-    // Override by setting warningsAsErrors=true in your ~/.gradle/gradle.properties
+    // Override by setting warningsAsErrors=true in your gradle.properties
     val warningsAsErrors: String? by project
     when (this) {
         is KotlinAndroidProjectExtension -> compilerOptions
         is KotlinJvmProjectExtension -> compilerOptions
-        else -> TODO("Unsupported project extension $this ${T::class}")
+        else -> throw IllegalStateException("Unsupported project extension $this ${T::class}")
     }.apply {
         kotlinExtension.jvmToolchain {
             languageVersion = JavaLanguageVersion.of(11)

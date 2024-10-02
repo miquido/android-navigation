@@ -1,3 +1,5 @@
+@file:JvmName("ActivityResultsRecipientComposable")
+
 package com.miquido.android.navigation.handler
 
 import androidx.activity.compose.LocalActivityResultRegistryOwner

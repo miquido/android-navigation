@@ -1,6 +1,6 @@
 plugins {
-    id("android-library.convention")
-    id("publishing.convention")
+    alias(libs.plugins.android.library.convention)
+    alias(libs.plugins.publishing)
 }
 
 android {
