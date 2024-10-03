@@ -3,8 +3,10 @@ package com.miquido.android.navigation
 import android.net.Uri
 import androidx.activity.result.contract.ActivityResultContract
 import androidx.navigation.NavOptionsBuilder
+import androidx.navigation.NavType
 import kotlinx.coroutines.flow.Flow
 import kotlin.reflect.KClass
+import kotlin.reflect.KType
 
 /**
  * [Navigator] is the class responsible for:
@@ -22,15 +24,26 @@ interface Navigator {
     val previousNavEntry: NavEntryInfo?
 
     /**
-     * Navigate to a route in the current NavGraph.
+     * Navigate to a destination in the current NavGraph.
      * If an invalid route is given, an IllegalArgumentException will be thrown.
      *
-     * @param direction route for the destination
+     * @param route route for the destination
      * @param builder DSL for constructing a new [androidx.navigation.NavOptions]
      *
      * @see [androidx.navigation.NavController.navigate]
      */
-    suspend fun navigate(direction: String, builder: NavOptionsBuilder.() -> Unit = {})
+    suspend fun navigate(route: String, builder: NavOptionsBuilder.() -> Unit = {})
+
+    /**
+     * Navigate to a destination in the current NavGraph.
+     * If an invalid route is given, an IllegalArgumentException will be thrown.
+     *
+     * @param route route for the destination
+     * @param builder DSL for constructing a new [androidx.navigation.NavOptions]
+     *
+     * @see [androidx.navigation.NavController.navigate]
+     */
+    suspend fun navigate(route: Any, builder: NavOptionsBuilder.() -> Unit = {})
 
     /**
      * Navigate to a destination via the given deep link Uri.
@@ -44,7 +57,7 @@ interface Navigator {
     /**
      * Attempts to pop back stack.
      *
-     * @param route the topmost destination to retain
+     * @param route for the topmost destination to retain
      * @param inclusive - whether the given destination should also be popped.
      * @param saveState - whether the back stack and the state of all destinations between the current destination
      * and the route should be saved for later restoration via [androidx.navigation.NavOptions]
@@ -52,6 +65,18 @@ interface Navigator {
      * @see [androidx.navigation.NavController.popBackStack]
      */
     suspend fun popBackStack(route: String, inclusive: Boolean, saveState: Boolean = false)
+
+    /**
+     * Attempts to pop back stack.
+     *
+     * @param route for the topmost destination to retain
+     * @param inclusive - whether the given destination should also be popped.
+     * @param saveState - whether the back stack and the state of all destinations between the current destination
+     * and the route should be saved for later restoration via [androidx.navigation.NavOptions]
+     *
+     * @see [androidx.navigation.NavController.popBackStack]
+     */
+    suspend fun popBackStack(route: Any, inclusive: Boolean, saveState: Boolean = false)
 
     /**
      * Attempts to navigate up in the navigation hierarchy.
@@ -74,13 +99,27 @@ interface Navigator {
     suspend fun <I> launchForResult(contract: KClass<out ActivityResultContract<I, *>>, input: I)
 
     /**
-     * Register backward result expectations from the specified route.
+     * Register backward result expectations from the specified destination.
      *
-     * @param originRoute route which is expected to publish backward result
+     * @param originRoute route for producing destination from which is expected backward result
      * @param type type of expected result
      * @return flow of results. Received `null`'s means cancellation.
      */
     fun <O : Any> registerForResult(originRoute: String, type: KClass<O>): Flow<O?>
+
+    /**
+     * Register backward result expectations from the specified destination.
+     *
+     * @param originRoute route for producing destination from which is expected backward result
+     * @param type type of expected result
+     * @param originRouteTypeMap  producing destination arguments map of kotlin type KType to its respective custom NavType
+     * @return flow of results. Received `null`'s means cancellation.
+     */
+    fun <O : Any> registerForResult(
+        originRoute: Any,
+        type: KClass<O>,
+        originRouteTypeMap: Map<KType, @JvmSuppressWildcards NavType<*>> = emptyMap()
+    ): Flow<O?>
 
     /**
      * Register new [ActivityResultContract] in [androidx.activity.result.ActivityResultRegistry].

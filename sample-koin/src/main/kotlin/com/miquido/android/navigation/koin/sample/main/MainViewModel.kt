@@ -5,6 +5,8 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.miquido.android.navigation.Navigator
+import com.miquido.android.navigation.koin.sample.NextRoute
+import com.miquido.android.navigation.koin.sample.ResultRoute
 import com.miquido.android.navigation.launchForResult
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -16,7 +18,7 @@ class MainViewModel(
 ) : ViewModel() {
 
     val navEntryResult: StateFlow<String?> = navigator
-        .registerForResult("result", String::class)
+        .registerForResult(ResultRoute, String::class)
         .stateIn(
             viewModelScope,
             started = SharingStarted.Lazily,
@@ -32,11 +34,11 @@ class MainViewModel(
         )
 
     fun navigateNext() = viewModelScope.launch {
-        navigator.navigate("next")
+        navigator.navigate(NextRoute)
     }
 
     fun navigateForResult() = viewModelScope.launch {
-        navigator.navigate("result")
+        navigator.navigate(ResultRoute)
     }
 
     fun pickContact() = viewModelScope.launch {

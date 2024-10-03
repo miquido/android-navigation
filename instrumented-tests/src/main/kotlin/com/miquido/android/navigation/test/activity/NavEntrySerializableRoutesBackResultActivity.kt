@@ -22,8 +22,15 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
+import kotlinx.serialization.Serializable
 
-class NavEntryBackResultActivity : ComponentActivity() {
+class NavEntrySerializableRoutesBackResultActivity : ComponentActivity() {
+
+    @Serializable
+    data object ReceiverRoute
+
+    @Serializable
+    data object PublisherRoute
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,9 +40,9 @@ class NavEntryBackResultActivity : ComponentActivity() {
     }
 
     @Composable
-    fun Content() = MaterialTheme {
-        ActivityRoot(RECEIVER_ROUT) {
-            composable(RECEIVER_ROUT) { navEntry ->
+    private fun Content() = MaterialTheme {
+        ActivityRoot(ReceiverRoute) {
+            composable<ReceiverRoute> { navEntry ->
                 val vm = navEntryViewModel<ReceiverViewModel>(navEntry)
                 val result by vm.publisherResults.collectAsState()
                 SingleActionScreen(RECEIVER_ROUT, "Navigate for result", vm::navigateToPublisher) {
@@ -47,7 +54,7 @@ class NavEntryBackResultActivity : ComponentActivity() {
                     )
                 }
             }
-            composable(PUBLISHER_ROUT) {
+            composable<PublisherRoute> {
                 val vm = navEntryViewModel<PublisherViewModel>(it)
                 SingleActionScreen(PUBLISHER_ROUT, "Navigate Up with result", vm::navigateToUpWithResult)
             }
@@ -59,7 +66,7 @@ class NavEntryBackResultActivity : ComponentActivity() {
     ) : ViewModel() {
 
         val publisherResults: StateFlow<String?> = navigator
-            .registerForResult(PUBLISHER_ROUT, String::class)
+            .registerForResult(PublisherRoute, String::class)
             .stateIn(
                 viewModelScope,
                 started = SharingStarted.Lazily,
@@ -67,7 +74,7 @@ class NavEntryBackResultActivity : ComponentActivity() {
             )
 
         fun navigateToPublisher() = viewModelScope.launch {
-            navigator.navigate(PUBLISHER_ROUT)
+            navigator.navigate(PublisherRoute)
         }
     }
 

@@ -7,20 +7,22 @@ import com.ramcosta.composedestinations.spec.Direction
 import com.ramcosta.composedestinations.spec.DirectionDestinationSpec
 import com.ramcosta.composedestinations.spec.Route
 
-operator fun NavAction.To.Companion.invoke(
+fun NavAction.NavigateTo.Companion.direction(
     direction: Direction,
     options: NavOptions = EMPTY_OPTIONS
-): NavAction.To = NavAction.To(direction.route, options)
+): NavAction.NavigateTo = NavAction.NavigateTo(direction.route, options)
 
-operator fun NavAction.Pop.Companion.invoke(
+fun NavAction.PopBackTo.Companion.route(
     route: Route,
     inclusive: Boolean,
     saveState: Boolean = false
-): NavAction.Pop = NavAction.Pop(route.route, inclusive, saveState)
+): NavAction.PopBackTo = NavAction.PopBackTo(route.route, inclusive, saveState)
 
-fun NavAction.To.direction(): Direction = Direction(direction)
+fun NavAction.NavigateTo.direction(): Direction =
+    Direction(requireNotNull(routeString) { "ramcosta.composedestinations.Direction requires a directions defined by string." })
 
-fun NavAction.Pop.route(): Route = RouteIml(route)
+fun NavAction.PopBackTo.route(): Route =
+    RouteIml(requireNotNull(routeString) { "ramcosta.composedestinations.Route requires route defined by string." })
 
 private data class RouteIml(
     override val route: String,

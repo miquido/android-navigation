@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library.convention)
     alias(libs.plugins.android.library.compose.convention)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -31,6 +32,8 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
+
+    implementation(libs.kotlinx.serialization.core)
 
     debugImplementation(libs.androidx.compose.ui.test.manifest)
 

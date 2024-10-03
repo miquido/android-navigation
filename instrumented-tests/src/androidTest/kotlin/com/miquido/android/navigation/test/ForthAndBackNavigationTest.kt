@@ -1,33 +1,16 @@
 package com.miquido.android.navigation.test
 
+import androidx.activity.ComponentActivity
 import androidx.compose.ui.test.assertIsDisplayed
-import androidx.compose.ui.test.junit4.createAndroidComposeRule
+import androidx.compose.ui.test.junit4.AndroidComposeTestRule
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
-import androidx.lifecycle.viewmodel.initializer
-import com.miquido.android.navigation.Navigator
-import com.miquido.android.navigation.getNavEntryId
-import com.miquido.android.navigation.test.activity.ForthAndBackNavigationActivity
-import com.miquido.android.navigation.test.activity.ForthAndBackNavigationActivity.Companion.DESTINATION_ROUT
-import com.miquido.android.navigation.test.activity.ForthAndBackNavigationActivity.Companion.START_ROUT
-import com.miquido.android.navigation.test.rules.createTestNavEntryViewModelsRule
-import org.junit.Rule
+import androidx.test.ext.junit.rules.ActivityScenarioRule
 import org.junit.Test
 
-class ForthAndBackNavigationTest {
+abstract class ForthAndBackNavigationTest<A : ComponentActivity> {
 
-    @get:Rule(order = 0)
-    val navEntryViewModelsRule = createTestNavEntryViewModelsRule {
-        initializer {
-            ForthAndBackNavigationActivity.StartViewModel(Navigator(getNavigation(), getNavEntryId()))
-        }
-        initializer {
-            ForthAndBackNavigationActivity.DestinationViewModel(Navigator(getNavigation(), getNavEntryId()))
-        }
-    }
-
-    @get:Rule(order = 1)
-    val composeTestRule = createAndroidComposeRule<ForthAndBackNavigationActivity>()
+    abstract val composeTestRule: AndroidComposeTestRule<ActivityScenarioRule<A>, A>
 
     @Test
     fun navigatingForthAndBackDisplaysExpectedScreens(): Unit = with(composeTestRule) {
@@ -46,6 +29,4 @@ class ForthAndBackNavigationTest {
         onNodeWithText("I am `$START_ROUT` Screen!")
             .assertIsDisplayed()
     }
-
-
 }

@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application.convention)
     alias(libs.plugins.android.application.compose.convention)
+    alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.kotlin.kapt)
     alias(libs.plugins.hilt)
 }
@@ -28,6 +29,8 @@ dependencies {
     implementation (libs.androidx.core.ktx)
     implementation (libs.androidx.navigation.compose)
     implementation (libs.androidx.lifecycle.viewmodel.ktx)
+
+    implementation(libs.kotlinx.serialization.core)
 
     implementation (libs.hilt.android)
     kapt (libs.hilt.compiler)
