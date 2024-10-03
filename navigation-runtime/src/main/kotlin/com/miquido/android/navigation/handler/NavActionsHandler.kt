@@ -35,8 +35,8 @@ internal fun NavActionsHandler(
 }
 
 private fun NavController.navigateTo(action: NavigateTo) = when {
-    action.routeString != null -> navigate(action.routeString)
-    action.routeAny != null -> navigate(action.routeAny)
+    action.routeString != null -> navigate(action.routeString, action.options)
+    action.routeAny != null -> navigate(action.routeAny, action.options)
     else -> throw IllegalArgumentException("Invalid route provided!")
 }
 
