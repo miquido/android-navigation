@@ -8,11 +8,11 @@ import androidx.lifecycle.ViewModelStoreOwner
 import androidx.lifecycle.viewmodel.MutableCreationExtras
 import androidx.navigation.NavBackStackEntry
 import com.miquido.android.navigation.viewmodel.NavEntryViewModelFactory
-import org.koin.androidx.compose.defaultExtras
-import org.koin.androidx.viewmodel.resolveViewModel
 import org.koin.core.annotation.KoinInternalApi
 import org.koin.core.context.GlobalContext
 import org.koin.core.parameter.parametersOf
+import org.koin.viewmodel.defaultExtras
+import org.koin.viewmodel.resolveViewModel
 
 internal class KoinNavEntryViewModelFactory : NavEntryViewModelFactory {
 
