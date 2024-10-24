@@ -34,7 +34,7 @@ mockk = "1.13.13"
 truth = "1.4.4"
 turbine = "1.2.0"
 deps-update-scanner = "0.51.0"
-deps-catalog-updater = "0.8.4"
+deps-catalog-updater = "0.8.5"
 
 [libraries]
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
