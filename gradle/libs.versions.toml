@@ -33,7 +33,7 @@ junit5 = "5.11.4"
 mockk = "1.13.16"
 truth = "1.4.4"
 turbine = "1.2.0"
-deps-update-scanner = "0.51.0"
+deps-update-scanner = "0.52.0"
 deps-catalog-updater = "0.8.5"
 
 [libraries]
