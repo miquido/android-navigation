@@ -6,7 +6,7 @@ android-version-versionName = "1.1.1"
 
 agp = "8.9.1"
 androidTools = "31.9.1"
-kotlin = "2.1.10"
+kotlin = "2.1.20"
 kotlinx-coroutines = "1.10.2"
 kotlinx-serialization = "1.8.1"
 kotlinx-kover = "0.9.1"
